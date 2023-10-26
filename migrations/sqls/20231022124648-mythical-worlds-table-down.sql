@@ -1,0 +1,1 @@
+DROP TABLE mythicl_weapons; 

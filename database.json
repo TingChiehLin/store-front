@@ -1,0 +1,17 @@
+{
+    "dev": {
+        "driver": "pg",
+        "host": "127.0.0.1",
+        "database": "store_db",
+        "user": "test",
+        "password": "test123"
+    },
+    "test": {
+        "driver": "pg",
+        "host": "127.0.0.1",
+        "database": "store_db_test",
+        "user": "test",
+        "password": "test123"
+    }
+}
+  
