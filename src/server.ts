@@ -3,6 +3,8 @@ import book_routes from './handlers/storeHandler';
 import bodyParser from 'body-parser'
 import cors from 'cors';
 
+import product_routes from './handlers/productHandler';
+
 const app: express.Application = express()
 const address: string = "0.0.0.0:3000"
 
@@ -13,6 +15,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
+
+app.get('/', cors(corsOptions), (_req: Request, res: Response) => {
+    res.send('this is the root route')
+})
 
 app.get('/product', cors(corsOptions), (_req: Request, res: Response) => {
     res.send('this is the product root route')
@@ -29,7 +35,7 @@ app.get('/product', cors(corsOptions), (_req: Request, res: Response) => {
     }
 })
 
-// book_routes(app)
+product_routes(app);
 
 app.listen(3000, function () {
     console.log(`starting app on: ${address}`)

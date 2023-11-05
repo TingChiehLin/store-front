@@ -14,15 +14,21 @@ const corsOptions = {
 };
 app.use((0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.json());
-app.get('/store', (_req, res) => {
+app.get('/product', (0, cors_1.default)(corsOptions), (_req, res) => {
+    res.send('this is the product root route');
+});
+app.get('/product', (0, cors_1.default)(corsOptions), (_req, res) => {
     try {
-        res.send('this is the INDEX route');
+        const products = [];
+        res.send('this is the res route');
+        return res.json(products);
     }
     catch (err) {
         res.status(400);
         res.json(err);
     }
 });
+// book_routes(app)
 app.listen(3000, function () {
     console.log(`starting app on: ${address}`);
 });

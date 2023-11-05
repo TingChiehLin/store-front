@@ -1,6 +1,6 @@
 # Storefront Backend Project
 
-Building backend service with API for frontend developer use
+Building backend shopping service API for frontend developer use
 
 ## Table of contents
 
