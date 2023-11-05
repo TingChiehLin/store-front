@@ -14,16 +14,22 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
 
-app.get('/', (_req: Request, res: Response) => {
+app.get('/product', cors(corsOptions), (_req: Request, res: Response) => {
+    res.send('this is the product root route')
+})
+
+app.get('/product', cors(corsOptions), (_req: Request, res: Response) => {
     try {
+        const products: any[] = []
         res.send('this is the res route')
+        return res.json(products);
     } catch (err) {
         res.status(400)
         res.json(err)
     }
 })
 
-book_routes(app)
+// book_routes(app)
 
 app.listen(3000, function () {
     console.log(`starting app on: ${address}`)

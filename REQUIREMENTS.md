@@ -5,11 +5,18 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### Products
-- Index 
+
+#### GET
+- /product
+- /product/:id
+- Index
 - Show
-- Create [token required]
 - [OPTIONAL] Top 5 most popular products 
 - [OPTIONAL] Products by category (args: product category)
+
+#### POST
+- Create [token required]- ??
+- /product
 
 #### Users
 - Index [token required]
@@ -19,6 +26,12 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Orders
 - Current Order by user (args: user id)[token required]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
+
+Update
+/product/:id -> PUT/Patch
+
+Delete
+/product/:id -> DELETE
 
 ## Data Shapes
 #### Product
@@ -39,4 +52,5 @@ These are the notes from a meeting with the frontend developer that describe wha
 - quantity of each product in the order
 - user_id
 - status of order (active or complete)
+
 
