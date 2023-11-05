@@ -1,8 +1,35 @@
 # Storefront Backend Project
 
+Building backend service with API for frontend developer use
+
+## Table of contents
+
+- [Getting Started](#getting-started)
+- [API Endpoint](#)
+
 ## Getting Started
 
-This repo contains a basic Node and Express app to get you started in constructing an API. To get started, clone this repo and run `yarn` in your terminal at the project root.
+1. Install node_modules dependencies`npm install or yarn install`
+2. Create an ``.env`` files on the root path in order to run credential information and set up
+
+```bash
+POSTGRES_HOST=127.0.0.1
+POSTGRES_PORT=5432
+POSTGRES_DB=Your Database name
+POSTGRES_TEST_DB=Your Test Database name
+POSTGRES_USER=Your Database username
+POSTGRES_PASSWORD=Your Database password
+ENV=dev
+BCRYPT_PASSWORD=123456
+SALT_ROUNDS=10
+```
+
+3. Run the server ``yarn or npm run start``
+4. Your Port is ``5432``
+
+## API Endpoint
+
+To see more `REQUIUREMENTS.md`
 
 ## Required Technologies
 Your application must make use of the following libraries:

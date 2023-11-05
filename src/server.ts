@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express'
+import book_routes from './handlers/storeHandler';
 import bodyParser from 'body-parser'
 import cors from 'cors';
 
@@ -13,14 +14,16 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
 
-app.get('/store', (_req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
     try {
-        res.send('this is the INDEX route')
+        res.send('this is the res route')
     } catch (err) {
         res.status(400)
         res.json(err)
     }
 })
+
+book_routes(app)
 
 app.listen(3000, function () {
     console.log(`starting app on: ${address}`)
