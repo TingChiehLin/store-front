@@ -17,6 +17,10 @@ const show = async (req: Request, res: Response) => {
     res.json(product);
 }
 
+const show_routes = (app: express.Application) => {
+    app.get('/products/:id', show);
+}
+
 const create = async (req: Request, res: Response) => {
     const product: Product = {
         id: '',
@@ -34,4 +38,12 @@ const create = async (req: Request, res: Response) => {
     }
 }
 
-export default product_routes;
+const create_routes = (app: express.Application) => {
+    app.post('/products', create);
+}
+
+export {
+    product_routes,
+    show_routes,
+    create_routes
+}
