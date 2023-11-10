@@ -1,9 +1,8 @@
 import express, { Request, Response } from 'express'
-import book_routes from './handlers/storeHandler';
 import bodyParser from 'body-parser'
 import cors from 'cors';
 
-import product_routes from './handlers/productHandler';
+import {product_routes} from './handlers/productHandler';
 
 const app: express.Application = express()
 const address: string = "0.0.0.0:3000"

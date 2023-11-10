@@ -1,5 +1,4 @@
 import client from "../database";
-import bcrypt from 'bcrypt';
 
 export type Product = {
     id: string;
