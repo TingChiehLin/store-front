@@ -60,11 +60,12 @@ export class UserStore {
         }
     }
 
-    async authenticate(firstname: string, password: string): Promise<User | null> {
+    async authenticate(firstname: string, lastname: string, password: string): Promise<User | null> {
         try {
-            const sql = 'SELECT password FROM users WHERE firstname=($1)';
+            const sql = 'SELECT password FROM users WHERE firstname=($1) AND lastname=($2)';
             const conn = await client.connect();
-            const result = await conn.query(sql, [firstname]);
+            const result = await conn.query(sql, [firstname, lastname]);
+            
             const user = result.rows[0];
             conn.release();
             if (bcrypt.compareSync(password, user.password)) {
@@ -72,7 +73,7 @@ export class UserStore {
             }
             return null;
         } catch (err) {
-            throw new Error(`Could not authenticate user ${firstname}. Error: ${err}`);
+            throw new Error(`Could not authenticate user ${firstname} ${lastname}. Error: ${err}`);
         }
     }
 }
