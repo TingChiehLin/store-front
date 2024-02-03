@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';   
 import { Product, ProductStore } from '../model/product'
+import verifyAuthToken from '../middleware/verifyAuthToken';
 
 const store = new ProductStore();
 
@@ -8,17 +9,9 @@ const index = async (_req: Request, res: Response) => {
     res.json(products);
 }
 
-const product_routes = (app: express.Application) => {
-    app.get('/products', index);
-}
-
 const show = async (req: Request, res: Response) => {  
     const product = await store.show(req.params.id);
     res.json(product);
-}
-
-const show_routes = (app: express.Application) => {
-    app.get('/products/:id', show);
 }
 
 const create = async (req: Request, res: Response) => {
@@ -38,12 +31,27 @@ const create = async (req: Request, res: Response) => {
     }
 }
 
-const create_routes = (app: express.Application) => {
+
+
+const product_routes = (app: express.Application) => {
+    app.get('/products', index);
+    app.get('/products/:id', show);
     app.post('/products', create);
 }
 
-export {
-    product_routes,
-    show_routes,
-    create_routes
-}
+export default product_routes;
+
+// app.get('/product', cors(corsOptions), (_req: Request, res: Response) => {
+//     res.send('this is the product root route')
+// })
+
+// app.get('/product', cors(corsOptions), (_req: Request, res: Response) => {
+//     try {
+//         const products: any[] = []
+//         res.send('this is the res route')
+//         return res.json(products);
+//     } catch (err) {
+//         res.status(400)
+//         res.json(err)
+//     }
+// })

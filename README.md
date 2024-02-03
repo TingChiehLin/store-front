@@ -15,19 +15,40 @@ Building backend shopping service API for frontend developer use
 2. Create an ``.env`` files on the root path in order to run credential information and set up
 
 ```bash
+# PostgreSQL database for dev
 POSTGRES_HOST=127.0.0.1
 POSTGRES_PORT=5432
 POSTGRES_DB=Your Database name
-POSTGRES_TEST_DB=Your Test Database name
 POSTGRES_USER=Your Database username
 POSTGRES_PASSWORD=Your Database password
+
+# database for testing
+POSTGRES_TEST_DB=Your Test Database name
 ENV=dev
+
+# password encryption
 BCRYPT_PASSWORD=123456
 SALT_ROUNDS=10
+
+# JWT
+TOKEN_SECRET=Your token secret
 ```
 
 3. Run the server ``yarn or npm run start``
 4. Your Port is ``5432``
+
+#### Initialize PostgreSQL and connect to database
+
+```
+# start PostgreSQL Server
+$ psql -h localhost -U postgres
+
+# create database for dev env
+$ CREATE DATABASE storefront;
+
+# connect to database
+$ \c storefront
+```
 
 ## API Endpoint
 

@@ -44,12 +44,6 @@ export class BookStore {
             const sql = 'INSERT INTO books (title, author, total_pages, summary) VALUES($1, $2, $3, $4) RETURNING *'
             // @ts-ignore
             const conn = await Client.connect()
-
-            // const hash = bcrypt.hashSync(
-            //     b.password + pepper, 
-            //     parseInt(saltRounds)
-            //  );
-
             const result = await conn
                 .query(sql, [b.title, b.author, b.totalPages, b.summary])
 

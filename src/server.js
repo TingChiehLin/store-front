@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
-const productHandler_1 = __importDefault(require("./handlers/productHandler"));
+const productHandler_1 = require("./handlers/productHandler");
 const app = (0, express_1.default)();
 const address = "0.0.0.0:3000";
 const corsOptions = {
@@ -32,7 +32,7 @@ app.get('/product', (0, cors_1.default)(corsOptions), (_req, res) => {
         res.json(err);
     }
 });
-(0, productHandler_1.default)(app);
+(0, productHandler_1.product_routes)(app);
 app.listen(3000, function () {
     console.log(`starting app on: ${address}`);
 });

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.create_routes = exports.show_routes = exports.product_routes = void 0;
 const product_1 = require("../model/product");
 const store = new product_1.ProductStore();
 const index = async (_req, res) => {
@@ -9,10 +10,15 @@ const index = async (_req, res) => {
 const product_routes = (app) => {
     app.get('/products', index);
 };
+exports.product_routes = product_routes;
 const show = async (req, res) => {
     const product = await store.show(req.params.id);
     res.json(product);
 };
+const show_routes = (app) => {
+    app.get('/products/:id', show);
+};
+exports.show_routes = show_routes;
 const create = async (req, res) => {
     const product = {
         id: '',
@@ -29,4 +35,7 @@ const create = async (req, res) => {
         res.json(err);
     }
 };
-exports.default = product_routes;
+const create_routes = (app) => {
+    app.post('/products', create);
+};
+exports.create_routes = create_routes;
